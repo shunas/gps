@@ -3,17 +3,13 @@
 #include <iostream>
 
 bool Route::operator==(const Route & r) const {
-
-	//TODO
-
-	return false;
+	// ------------------------ ISSUE 3 ------------------------
+	return villeA_ == r.villeA_ and villeB_ == r.villeB_ and distance_ == r.distance_;
 }
 
 bool Route::operator!=(const Route & r) const {
-
-    //TODO
-
-    return false;
+	// ------------------------ ISSUE 3 ------------------------
+    return villeA_ != r.villeA_ and villeB_ != r.villeB_ and distance_ != r.distance_;
 }
 
 std::istream& operator >>(std::istream& is, Route& r) {

@@ -1,0 +1,12 @@
+PROJECT_NAME           = ${CMAKE_PROJECT_NAME}
+OUTPUT_DIRECTORY       = ${CMAKE_BINARY_DIR}/doc/
+INPUT                  = ${CMAKE_SOURCE_DIR}/src
+EXTRACT_ALL            = YES
+RECURSIVE              = YES
+OUTPUT_LANGUAGE        = French
+GENERATE_BUGLIST       = YES
+GENERATE_TODOLIST      = YES
+GENERATE_HTML          = YES
+GENERATE_LATEX         = NO
+FULL_PATH_NAMES        = NO
+

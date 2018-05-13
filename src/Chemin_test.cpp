@@ -37,5 +37,5 @@ class Chemin_test_ : public Chemin {
 
 TEST_GROUP(GroupChemin) { };
 TEST(GroupChemin, importerCsv_0) { Chemin_test_().importerCsv_0(); }
-//TEST(GroupChemin, exporterDot_0) { Chemin_test_().exporterDot_0(); }
+TEST(GroupChemin, exporterDot_0) { Chemin_test_().exporterDot_0(); }
 

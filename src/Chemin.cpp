@@ -88,6 +88,25 @@ void Chemin::importerCsv(istream & is) {
 void Chemin::exporterDot(ostream & os, const string & ville1,
         const string & ville2) const {
 
-		//TODO
+		// ------------------------ ISSUE 2 ------------------------
+
+      os << "graph { \n";
+      os <<"splines=line; \n";
+      Chemin court = calculerPlusCourt(ville1,ville2);
+      for(int i=0;i<court.routes_.size();i++)
+	{
+	  if(i ==0)
+	     os << court.routes_[i].villeA_ << " -- " << court.routes_[i].villeB_;
+	  else
+	    os << " -- " <<court.routes_[i].villeB_ ;
+	}
+      os << " [color=red, penwidth=3]; \n";
+
+      for(int i=0;i<routes_.size();i++)
+	{
+	  os << routes_[i].villeA_ << " -- " << routes_[i].villeB_ << " [label="<< routes_[i].distance_<<"]; \n";
+	}
+
+      os << "}";
 
 }

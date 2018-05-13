@@ -23,8 +23,13 @@ std::istream& operator >>(std::istream& is, Route& r) {
         r.villeA_ = buffer;
 	if (std::getline(is, buffer, ' '))
         r.villeB_ = buffer;
+    char * p;
 	if (std::getline(is, buffer, '\n'))
-        r.distance_ = std::stoi(buffer);
+	{
+		std::strtol(buffer.c_str(),&p,10);
+		if(*p == 0)
+			r.distance_ = std::stoi(buffer);
+    }
 	//	std::locale::global(vieuxLoc);
 	return is;
 

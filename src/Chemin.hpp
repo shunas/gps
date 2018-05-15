@@ -4,8 +4,9 @@
 #include "Route.hpp"
 #include <iostream>
 #include <vector>
-
-// ensemble de routes 
+#include <algorithm>
+#include <cctype>
+// ensemble de routes
 class Chemin {
 
     protected:
@@ -17,12 +18,12 @@ class Chemin {
         // precondition ville1 != ville2
         // precondition ensemble de routes non vide
         // postcondition chemin ordonné : (ville1,x), (x,y), (y,ville2)
-        Chemin calculerPlusCourt(const std::string & ville1, 
+        Chemin calculerPlusCourt(const std::string & ville1,
                 const std::string & ville2) const;
 
         // partitionne les routes avec ou sans la ville donnée
         // postcondition les routes de cheminAvec commencent par la ville donnée
-        void partitionner(const std::string & ville, Chemin & cheminAvec, 
+        void partitionner(const std::string & ville, Chemin & cheminAvec,
                 Chemin & cheminSans) const;
 
     public:
@@ -36,7 +37,7 @@ class Chemin {
         void importerCsv(std::istream & is);
 
      // exporte un graphe dot (avec le chemin le plus court en rouge)
-        void exporterDot(std::ostream & os, const std::string & ville1, 
+        void exporterDot(std::ostream & os, const std::string & ville1,
 	const std::string & ville2) const;
 
 };

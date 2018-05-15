@@ -65,9 +65,22 @@ Chemin Chemin::calculerPlusCourt(const string & ville1,
 
 void Chemin::partitionner(const string & ville, Chemin & cheminAvec,
         Chemin & cheminSans) const {
+		// ------------------------ ISSUE 4 ------------------------
 
-    // TODO
-
+	for(int i=0; i<routes_.size();++i)
+	{
+		if(routes_[i].villeA_ == ville)
+		{
+			cheminAvec.routes_.push_back(Route{routes_[i].villeA_,routes_[i].villeB_,routes_[i].distance_});
+			continue;
+		}
+		if(routes_[i].villeB_==ville)
+		{
+			cheminAvec.routes_.push_back(Route{routes_[i].villeB_,routes_[i].villeA_,routes_[i].distance_});
+			continue;
+		}
+		cheminSans.routes_.push_back(Route{routes_[i].villeA_,routes_[i].villeB_,routes_[i].distance_});
+	}
 }
 
 void Chemin::importerCsv(istream & is) {
@@ -77,13 +90,17 @@ void Chemin::importerCsv(istream & is) {
 	  std::string contenu;
 	  getline(is,contenu);
       while(!is.eof()){
-      Route r;
-      istringstream str(contenu);
-      str >> r;
-      routes_.push_back(r);
-      getline(is,contenu);
-      }
-}
+		  if(std::any_of(contenu.begin(), contenu.end(), ::isdigit))
+			{
+			  Route r;
+			  istringstream str(contenu);
+			  str >> r;
+			  routes_.push_back(r);
+			}
+		  getline(is,contenu);
+		}
+	}
+
 
 void Chemin::exporterDot(ostream & os, const string & ville1,
         const string & ville2) const {
